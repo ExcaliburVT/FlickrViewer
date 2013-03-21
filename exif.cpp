@@ -13,6 +13,7 @@
 
 
 Exif::Exif(){
+    readIndex=0;
 }
 
 Exif::~Exif(){

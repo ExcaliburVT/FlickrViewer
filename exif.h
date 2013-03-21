@@ -60,7 +60,7 @@ public:
 private:
     rint8u readByte(QFile &file);
     rint8u readByte(QByteArray file);
-    int readIndex = 0;
+    int readIndex;
 
 };
 
