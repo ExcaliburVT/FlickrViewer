@@ -37,9 +37,9 @@ MainWindow::MainWindow()
     this->setCentralWidget ( photoView );
 
 
-    //this->setWindowState(Qt::WindowMaximized);
-    //this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    //this->showFullScreen();
+    this->setWindowState(Qt::WindowMaximized);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    this->showFullScreen();
 
     qApp->setOverrideCursor( QCursor( Qt::BlankCursor ) );
 
