@@ -31,4 +31,5 @@ SOURCES += main.cpp \
     imagemanager.cpp \
     exif.cpp
 
-OTHER_FILES +=
+OTHER_FILES += \
+    README.md
