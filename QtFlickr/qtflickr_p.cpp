@@ -258,14 +258,17 @@ int QtFlickrPrivate::request ( const QtfMethod &method, const QtfRequest &reques
     qSort ( keyList.begin(), keyList.end() );
 
     QString apiSig ( apiSecret );
-    QUrl url ( "http://www.flickr.com/services/rest/", QUrl::TolerantMode );
+    QUrl  url ( "http://www.flickr.com/services/rest/");
+    QUrlQuery  urlQuery;
+
     for ( int i = 0; i < keyList.size(); ++i )
     {
         apiSig.append ( keyList.at ( i ) + map.value ( keyList.at ( i ) ) );
-        url.addQueryItem ( keyList.at ( i ),  map.value ( keyList.at ( i ) ) );
+        urlQuery.addQueryItem ( keyList.at ( i ),  map.value ( keyList.at ( i ) ) );
     }
 
-    url.addQueryItem ( "api_sig",  md5 ( apiSig ) );
+    urlQuery.addQueryItem ( "api_sig",  md5 ( apiSig ) );
+    url.setQuery(urlQuery);
 
     requestCounter++;
     RequestData requestData;
@@ -275,9 +278,10 @@ int QtFlickrPrivate::request ( const QtfMethod &method, const QtfRequest &reques
 
     QNetworkReply *reply;
     if ( !get )
-        reply = manager->post ( QNetworkRequest ( QUrl("http://www.flickr.com/services/rest/") ), url.encodedQuery () );
+        reply = manager->post ( QNetworkRequest ( QUrl("http://www.flickr.com/services/rest/") ), url.toString().toUtf8() );
     else
         reply = manager->get ( QNetworkRequest ( url ) );
+
 
     requestDataMap.insert ( reply,requestData );
     return requestData.requestId;

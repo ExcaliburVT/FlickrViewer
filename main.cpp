@@ -18,20 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                *
  ******************************************************************************/
 
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include "mainwindow.h"
 #include <QtDebug>
 #include <QFile>
 #include <QTextStream>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
-void myMessageHandler(QtMsgType type, const char *msg)
+void myMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QString txt;
+    QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
         //txt = QString("Debug: %1").arg(msg);
-        fprintf(stderr, "Debug: %s\n", msg);		
+        fprintf(stderr, "Debug: %s\n", localMsg.constData());
 		return;
         break;
     case QtWarningMsg:
@@ -52,7 +53,8 @@ void myMessageHandler(QtMsgType type, const char *msg)
 
 int main(int argc, char *argv[])
 {
-    qInstallMsgHandler(myMessageHandler);
+
+    qInstallMessageHandler(myMessageHandler);
     QApplication a(argc, argv);
     
     MainWindow w;

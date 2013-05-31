@@ -26,16 +26,16 @@
 #include <ctime>
 #include <QSettings>
 #include <imagemanager.h>
+#include <QtWidgets/QMainWindow>
+
 
 MainWindow::MainWindow()
     : QMainWindow()
 {
-
     photoView = new PhotoView();
     imageManager = new ImageManager();
 
     this->setCentralWidget ( photoView );
-
 
     this->setWindowState(Qt::WindowMaximized);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );

@@ -1,7 +1,7 @@
 #ifndef IMAGEMANAGER_H
 #define IMAGEMANAGER_H
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include <./QtFlickr/qtflickr.h>
 #include <QNetworkReply>
 #include <photodetail.h>

@@ -7,6 +7,7 @@ TEMPLATE = app
 ##DEFINES += QT_NO_DEBUG_OUTPUT
 
 QT += 	network xml
+QT += core gui widgets
 
 DEPENDPATH += . ../../
 INCLUDEPATH += . ../../
@@ -29,3 +30,6 @@ SOURCES += main.cpp \
     photoview.cpp \
     imagemanager.cpp \
     exif.cpp
+
+OTHER_FILES += \
+    ReadMe.txt

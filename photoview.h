@@ -21,7 +21,7 @@
 #ifndef PHOTO_H
 #define PHOTO_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QNetworkReply>
 #include <QTimer>
 #include <QTimeLine>
